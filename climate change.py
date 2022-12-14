@@ -135,10 +135,10 @@ def co2(mod_data):
 
 co2(mod_data)
 
-def Methane_emissions(o_data):
-    o_datas = o_data.groupby(["Series Name"])
-    print(o_datas.describe())
-    d = o_datas.get_group("Methane emissions (kt of CO2 equivalent)")
+def Methane_emissions(mod_data):
+    mod_datas = mod_data.groupby(["Series Name"])
+    print(mod_datas.describe())
+    d = mod_datas.get_group("Methane emissions (kt of CO2 equivalent)")
     print(d)
     data1 = d.loc[:,"1990 [YR1990]":"2015 [YR2015]"]
     data1 = np.transpose(data1)
@@ -160,4 +160,4 @@ def Methane_emissions(o_data):
     plt.savefig("Methane_emissions lineplot.png")
 
 
-Methane_emissions(o_data)
+Methane_emissions(mod_data)
