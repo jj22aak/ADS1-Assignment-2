@@ -135,14 +135,19 @@ def co2(mod_data):
 
 co2(mod_data)
 
+#function for plotting line graph for methane emissions
 def Methane_emissions(mod_data):
+    
     mod_datas = mod_data.groupby(["Series Name"])
+    #finding the mean
     print(mod_datas.describe())
     d = mod_datas.get_group("Methane emissions (kt of CO2 equivalent)")
     print(d)
+    
     data1 = d.loc[:,"1990 [YR1990]":"2015 [YR2015]"]
     data1 = np.transpose(data1)
     print(data1)
+    
     data1 = data1.rename(columns={30:"Argentina",31:"Belgium",32:"Canada",33:"China",34:"France",35:"Germany",36:"India",37:"Israel",38:"Singapore",39:"Ukraine"})
     plt.figure(figsize=(10,10))
     plt.title("Methane_emissions", size=40)
@@ -158,6 +163,5 @@ def Methane_emissions(mod_data):
     plt.plot(data1.index,data1["Ukraine"],label="Ukraine")
     plt.legend()
     plt.savefig("Methane_emissions lineplot.png")
-
 
 Methane_emissions(mod_data)
